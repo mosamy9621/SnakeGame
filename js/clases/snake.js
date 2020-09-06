@@ -84,12 +84,10 @@ export class Snake {
         for (let i = 1; i < this.snakeBody.length; i++) {
             let flag1 = this.snakeBody[i].x == this.snakeBody[0].x;
             let flag2 = this.snakeBody[i].y == this.snakeBody[0].y;
-            console.log(flag1, flag2);
             flag = flag1 && flag2;
             if (flag)
                 break;
         }
-        console.log('this is main ' + flag);
         return flag;
     }
 }

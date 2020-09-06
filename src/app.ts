@@ -16,17 +16,14 @@ function main(time:number ){
     lastRenderTime=time;
     snake.drawSnake();
     snake.updateSnake();
-
-
     if(snake.snakeDeath()){
-       setTimeout(()=>{alert('Game Over');location.reload();},0) ; 
-       clearTimeout();  
-       }
-
-
+        setTimeout(()=>{alert('Game Over');location.reload();},0) ; 
+        clearTimeout();  
+        return ;
+        }
     food.drawFood();   
     food.updateFood();
-    
+
 
 }
 window.requestAnimationFrame(main);

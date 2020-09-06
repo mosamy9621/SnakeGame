@@ -17,6 +17,7 @@ function main(time) {
     if (snake.snakeDeath()) {
         setTimeout(() => { alert('Game Over'); location.reload(); }, 0);
         clearTimeout();
+        return;
     }
     food.drawFood();
     food.updateFood();
