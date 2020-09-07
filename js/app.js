@@ -3,12 +3,16 @@ import { Food } from './clases/food.js';
 let lastRenderTime = 0;
 let snake = new Snake;
 let food = new Food(snake);
+let gameOver = false;
 snake.setSnakeSpeed(8);
 food.randomizePosition();
 snake.setExpantionRate(1);
 function main(time) {
-    window.requestAnimationFrame(main);
     let timeInSeconds = (time - lastRenderTime) / 1000;
+    if (gameOver) {
+        return;
+    }
+    window.requestAnimationFrame(main);
     if (timeInSeconds < 1 / snake.getSnakeSpeed())
         return;
     lastRenderTime = time;
@@ -16,8 +20,7 @@ function main(time) {
     snake.updateSnake();
     if (snake.snakeDeath()) {
         setTimeout(() => { alert('Game Over'); location.reload(); }, 0);
-        clearTimeout();
-        return;
+        gameOver = true;
     }
     food.drawFood();
     food.updateFood();
